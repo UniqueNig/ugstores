@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Online Store — Project Questionnaire</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #d8d4cc;
+    --accent: #b8914a;
+    --soft: #f7f5f1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    line-height: 1.55;
+    margin: 0;
+    background: #fff;
+  }
+  .page { max-width: 820px; margin: 0 auto; padding: 48px 40px 64px; }
+
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 18px; margin-bottom: 28px; }
+  .brandline { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); font-family: Arial, sans-serif; }
+  h1 { font-size: 30px; margin: 8px 0 6px; }
+  .sub { color: var(--muted); font-size: 15px; margin: 0; }
+
+  .intro { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 24px 0 32px; font-size: 14.5px; }
+  .intro strong { color: var(--accent); }
+
+  h2 {
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    font-family: Arial, sans-serif; color: #fff; background: var(--ink);
+    padding: 8px 14px; border-radius: 5px; margin: 34px 0 6px;
+  }
+  .hint { color: var(--muted); font-size: 13px; margin: 2px 0 14px; font-family: Arial, sans-serif; }
+
+  .q { margin: 0 0 16px; }
+  .q label { display: block; font-size: 15px; margin-bottom: 7px; font-family: Arial, sans-serif; }
+  .q .note { color: var(--muted); font-weight: normal; font-size: 13px; }
+
+  /* fill-in lines */
+  .fill { border-bottom: 1px solid var(--line); min-height: 22px; }
+  .fill.lg { min-height: 70px; border: 1px solid var(--line); border-radius: 6px; }
+  .row { display: flex; gap: 16px; }
+  .row .q { flex: 1; }
+
+  /* checkbox / option rows */
+  .opts { font-family: Arial, sans-serif; font-size: 14px; }
+  .opts span { display: inline-block; margin: 0 18px 8px 0; }
+  .box { display: inline-block; width: 13px; height: 13px; border: 1.5px solid var(--ink); border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+
+  .checklist { font-family: Arial, sans-serif; font-size: 14px; }
+  .checklist div { margin-bottom: 8px; }
+
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; font-family: Arial, sans-serif; }
+
+  .printbar { position: sticky; top: 0; background: #111; color: #fff; font-family: Arial, sans-serif; font-size: 13px; padding: 10px 16px; text-align: center; }
+  .printbar button { background: var(--accent); color: #000; border: 0; padding: 7px 16px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-left: 10px; }
+
+  @media print {
+    .printbar { display: none; }
+    .page { padding: 0 8px; }
+    h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="printbar">
+  To save as PDF: press <strong>Ctrl/Cmd + P</strong> → choose <strong>“Save as PDF”</strong>.
+  <button onclick="window.print()">Save / Print PDF</button>
+</div>
+
+<div class="page">
+  <header>
+    <div class="brandline">Emmanuel Faniyi</div>
+    <h1>Let’s Build Your Online Store</h1>
+    <p class="sub">A few questions so we can design a shop that fits your brand and sells your products.</p>
+  </header>
+
+  <div class="intro">
+    Hi! 👋 To build your online store, I just need to understand your business and how you want it to
+    look and work. <strong>Please answer what you can</strong> — if you’re unsure about anything, leave it
+    blank and we’ll figure it out together. The more detail you give, the closer the first version will be
+    to what you imagined. Don’t worry about technical words; just describe things in your own words.
+  </div>
+
+  <!-- 1 -->
+  <h2>1 · About Your Business</h2>
+  <p class="hint">The basics that appear across your site (logo text, footer, page titles).</p>
+  <div class="q"><label>Business name (exactly as it should appear)</label><div class="fill"></div></div>
+  <div class="q"><label>One short sentence describing what you sell <span class="note">(your “tagline”)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Tell your story in a few lines <span class="note">(how/why you started — used on the About page)</span></label><div class="fill lg"></div></div>
+  <div class="row">
+    <div class="q"><label>City / Location</label><div class="fill"></div></div>
+    <div class="q"><label>Year started <span class="note">(optional)</span></label><div class="fill"></div></div>
+  </div>
+
+  <!-- 2 -->
+  <h2>2 · How Customers Reach You</h2>
+  <p class="hint">Shown on the contact page and used for order/contact emails.</p>
+  <div class="row">
+    <div class="q"><label>Business email</label><div class="fill"></div></div>
+    <div class="q"><label>Phone number</label><div class="fill"></div></div>
+  </div>
+  <div class="q"><label>WhatsApp number for orders/enquiries <span class="note">(with country code, e.g. 234…)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Social media links <span class="note">(Instagram, Facebook, TikTok, X — paste any you have)</span></label><div class="fill lg"></div></div>
+
+  <!-- 3 -->
+  <h2>3 · Your Products</h2>
+  <p class="hint">This shapes the shop, product pages, and stock tracking.</p>
+  <div class="q"><label>What kinds of products do you sell? <span class="note">(list your main categories, e.g. Dresses, Bags, Shoes)</span></label><div class="fill lg"></div></div>
+  <div class="row">
+    <div class="q"><label>Roughly how many products to start with?</label><div class="fill"></div></div>
+    <div class="q"><label>Typical price range</label><div class="fill"></div></div>
+  </div>
+  <div class="q">
+    <label>Do your products come in variations? <span class="note">(tick all that apply)</span></label>
+    <div class="opts">
+      <span><span class="box"></span> Sizes (S, M, L… or shoe numbers)</span>
+      <span><span class="box"></span> Colours</span>
+      <span><span class="box"></span> Neither — single version</span>
+    </div>
+  </div>
+  <div class="q">
+    <label>Do you want the site to track stock and show “Sold Out”?</label>
+    <div class="opts"><span><span class="box"></span> Yes, track stock</span><span><span class="box"></span> No, always available</span></div>
+  </div>
+  <div class="q">
+    <label>Do you have product photos ready?</label>
+    <div class="opts"><span><span class="box"></span> Yes, good photos</span><span><span class="box"></span> Some</span><span><span class="box"></span> Need help with photos</span></div>
+  </div>
+
+  <!-- 4 -->
+  <h2>4 · The Look &amp; Feel</h2>
+  <p class="hint">This guides your colours, fonts, and overall style. Pick whatever feels closest.</p>
+  <div class="q">
+    <label>Which style fits your brand best?</label>
+    <div class="opts">
+      <span><span class="box"></span> Elegant &amp; warm (gold tones)</span>
+      <span><span class="box"></span> Premium &amp; rich (deep, luxurious)</span>
+      <span><span class="box"></span> Clean &amp; modern (minimal, cool tones)</span>
+      <span><span class="box"></span> Not sure — you decide</span>
+    </div>
+  </div>
+  <div class="q"><label>Do you have brand colours already? <span class="note">(name them or paste colour codes like #1A2B3C)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Do you have a logo? <span class="note">(yes/no — if yes, please send the file)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Websites you like the look of <span class="note">(paste 1–3 links — even from other industries)</span></label><div class="fill lg"></div></div>
+
+  <!-- 5 -->
+  <h2>5 · Your Homepage</h2>
+  <p class="hint">We can show or hide these sections, in any order.</p>
+  <div class="q">
+    <label>What should the homepage highlight? <span class="note">(tick all you want)</span></label>
+    <div class="opts">
+      <span><span class="box"></span> Big welcome banner</span>
+      <span><span class="box"></span> Featured / best-selling products</span>
+      <span><span class="box"></span> Product categories</span>
+      <span><span class="box"></span> Why-shop-with-us (delivery, quality…)</span>
+      <span><span class="box"></span> Customer reviews</span>
+      <span><span class="box"></span> Newsletter sign-up</span>
+    </div>
+  </div>
+  <div class="q"><label>One short headline for the welcome banner <span class="note">(e.g. “Premium fashion, delivered to your door”)</span></label><div class="fill"></div></div>
+
+  <!-- 6 -->
+  <h2>6 · Getting Paid</h2>
+  <p class="hint">Online card/transfer payments are handled by Paystack.</p>
+  <div class="q">
+    <label>How do you want to receive payment?</label>
+    <div class="opts">
+      <span><span class="box"></span> Online (cards, transfer, USSD via Paystack)</span>
+      <span><span class="box"></span> WhatsApp / manual for now</span>
+      <span><span class="box"></span> Both</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="q"><label>Currency</label><div class="fill"></div></div>
+    <div class="q"><label>Do you have a Paystack account? <span class="note">(yes/no)</span></label><div class="fill"></div></div>
+  </div>
+
+  <!-- 7 -->
+  <h2>7 · Delivery &amp; Shipping</h2>
+  <p class="hint">Used to calculate delivery options at checkout.</p>
+  <div class="q"><label>Where do you deliver? <span class="note">(e.g. Lagos only, nationwide, specific states)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Your delivery options &amp; fees <span class="note">(e.g. Standard ₦3,000 / Express ₦7,000 / Pickup free)</span></label><div class="fill lg"></div></div>
+  <div class="q"><label>Roughly how long does delivery take?</label><div class="fill"></div></div>
+
+  <!-- 8 -->
+  <h2>8 · Policies &amp; Info</h2>
+  <p class="hint">Shown on your shipping, returns, and FAQ pages (we’ll draft these — just give the gist).</p>
+  <div class="q"><label>Returns / exchange policy <span class="note">(e.g. returns within 7 days if unused)</span></label><div class="fill lg"></div></div>
+  <div class="q"><label>Common questions customers ask you <span class="note">(we’ll turn these into an FAQ)</span></label><div class="fill lg"></div></div>
+
+  <!-- 9 -->
+  <h2>9 · Domain &amp; Email</h2>
+  <div class="q"><label>Do you own a website address (domain)? <span class="note">(if yes, what is it? e.g. lolaskitchen.com)</span></label><div class="fill"></div></div>
+  <div class="q"><label>Do you have a business email on that domain? <span class="note">(e.g. hello@lolaskitchen.com)</span></label><div class="fill"></div></div>
+
+  <!-- 10 -->
+  <h2>10 · Please Send These Files</h2>
+  <p class="hint">Email or share these so we can fill the site with your real content.</p>
+  <div class="checklist">
+    <div><span class="box"></span> Logo (PNG/SVG if possible)</div>
+    <div><span class="box"></span> Product photos (named or grouped by product)</div>
+    <div><span class="box"></span> Product list with names, prices, sizes/colours, and stock counts</div>
+    <div><span class="box"></span> Any brand colours / fonts you already use</div>
+    <div><span class="box"></span> Your business logo/photos for the About page (optional)</div>
+  </div>
+
+  <!-- 11 -->
+  <h2>11 · Anything Else?</h2>
+  <div class="q"><label>Special features, ideas, or concerns you’d like to mention</label><div class="fill lg"></div></div>
+  <div class="row">
+    <div class="q"><label>Ideal launch date <span class="note">(optional)</span></label><div class="fill"></div></div>
+    <div class="q"><label>Budget range <span class="note">(optional)</span></label><div class="fill"></div></div>
+  </div>
+
+  <footer>
+    Thank you! Send this completed form (and your files) back to
+    <strong>faniyiemmanuel2018@gmail.com</strong> or WhatsApp <strong>0813 487 9924</strong>.
+    I’ll review everything and get back to you with next steps.
+  </footer>
+</div>
+
+</body>
+</html>

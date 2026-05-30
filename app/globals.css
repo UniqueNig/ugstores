@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Light mode */
+    --bg-primary: #f5f4f0;
+    --bg-secondary: #eeede8;
+    --text-primary: #0a0a0a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #9a9a9a;
+    --accent: #b8914a;
+    --accent-hover: #a07838;
+    --border: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --nav-bg: rgba(245, 244, 240, 0.95);
+  }
+
+  .dark {
+    /* Dark mode */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #505050;
+    --accent: #c8a96e;
+    --accent-hover: #e8c98e;
+    --border: rgba(255, 255, 255, 0.1);
+    --card-bg: #111111;
+    --nav-bg: rgba(10, 10, 10, 0.95);
+  }
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  /* Brand body font (pairs with the Playfair Display logo/headings). */
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Brand tagline voice — mirrors the logo's italic strapline
+   ("Drawing you to the place of Growth."). Add class="brand-tagline". */
+.brand-tagline {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   GLASS UTILITIES (Apple-style "liquid glass")  — used by the U.G STORES UI.
+
+   WHY these are separate classes (not theme tokens): the frosted look needs
+   `backdrop-filter`, which a colour variable can't provide. Keeping it in
+   opt-in classes means the new storefront pages get glass, while the existing
+   engine components (admin, product cards) keep their solid backgrounds and
+   full contrast. Apply `.glass` on any panel you want frosted.
+
+   `--glass-tint` / `--glass-border` default to neutral but can be overridden
+   inline (e.g. style={{ "--glass-tint": "rgba(244,160,28,0.12)" }}) to tint a
+   card with the orange or green brand colour.
+   ─────────────────────────────────────────────────────────────────────────── */
+.glass {
+  --glass-tint: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  background-color: var(--glass-tint);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(22, 36, 15, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Stronger blur + lift for hero/feature panels. */
+.glass-strong {
+  --glass-tint: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  background-color: var(--glass-tint);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px rgba(22, 36, 15, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Frosted sticky nav. */
+.glass-nav {
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Dark mode: glass panels go to a translucent dark tint instead of white. */
+.dark .glass {
+  --glass-tint: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.dark .glass-strong {
+  --glass-tint: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Soft brand glow blob — drop behind glass panels for the "light through
+   frosted glass" effect. Pair with an inline backgroundColor brand tint. */
+.brand-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .brand-glow {
+    animation: glowDrift 14s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(4%, -3%) scale(1.08);
+  }
+}
+
+/* Floating glass chips — gentle independent bob. Each chip sets its own
+   --float-dur and --float-delay (staggered per index) so they drift out of
+   sync and feel alive rather than marching in lockstep. */
+@keyframes floatChip {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .float-chip {
+    animation: floatChip var(--float-dur, 5s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+    will-change: transform;
+  }
+}
+
+.featured-view-all:hover {
+  color: var(--accent) !important;
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

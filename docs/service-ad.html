@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tech with Dami — Online Store from ₦100k</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #060c1a; font-family: "Manrope", sans-serif; color: #fff; }
+
+  .bar { position: sticky; top: 0; z-index: 99; background: #0d1426; color: #fff; font-size: 13px; padding: 12px 18px; text-align: center; line-height: 1.5; border-bottom: 1px solid #1d2942; }
+  .bar b { color: #7cc4ff; }
+  .stage { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; padding: 40px; }
+  .label { text-align: center; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #6b7da0; margin-bottom: 10px; font-family: "Space Grotesk"; }
+  .wrap { display: flex; flex-direction: column; align-items: center; }
+  .dl {
+    margin-top: 14px; font-family: "Space Grotesk"; font-weight: 700; font-size: 15px; cursor: pointer;
+    color: #061226; background: linear-gradient(95deg, #7cc4ff, #4da3ff);
+    border: 0; border-radius: 999px; padding: 12px 26px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  .dl:hover { opacity: .9; } .dl:disabled { opacity: .6; cursor: wait; }
+
+  /* ── Canvas ───────────────────────────────────────────────────────────── */
+  .canvas {
+    width: 1080px; position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(115% 75% at 84% -8%, #1f4f9c 0%, transparent 50%),
+      radial-gradient(120% 85% at -12% 112%, #0e3a6b 0%, transparent 52%),
+      linear-gradient(158deg, #0b1730 0%, #0a1a3a 55%, #060d1f 100%);
+    display: flex; flex-direction: column;
+  }
+  .square   { height: 1080px; padding: 60px 64px; }
+  .portrait { height: 1350px; padding: 84px; }
+  .story    { height: 1920px; padding: 120px 88px; justify-content: center; }
+
+  .orb { position: absolute; border-radius: 50%; filter: blur(130px); z-index: 0; }
+  .orb.a { width: 600px; height: 600px; background: #2f7fe0; top: -160px; right: -140px; opacity: .34; }
+  .orb.b { width: 540px; height: 540px; background: #1aa7c9; bottom: -200px; left: -160px; opacity: .26; }
+
+  .content { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
+
+  .brandtop { font-family: "Space Grotesk"; font-weight: 700; letter-spacing: -.5px; margin-bottom: 26px; color: #eaf2ff; }
+  .brandtop .b { color: #5aa9ff; }
+
+  .eyebrow {
+    display: inline-flex; align-self: flex-start; align-items: center; gap: 11px; white-space: nowrap;
+    font-family: "Space Grotesk"; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: #bcd4f5; background: rgba(120,170,255,.10); border: 1px solid rgba(120,170,255,.28);
+    border-radius: 999px; padding: 12px 26px;
+  }
+  /* letter-spacing adds trailing space after the last letter; pull it back so
+     the pill looks balanced left↔right (this was the "out of sync" look). */
+  .eyebrow .txt { margin-right: -2px; }
+  .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; flex-shrink: 0; }
+
+  h1 { font-family: "Space Grotesk"; font-weight: 700; line-height: 1.05; letter-spacing: -1.5px; margin-top: 28px; color: #ffffff; }
+  .accent {
+    background: linear-gradient(95deg, #8fd0ff 0%, #5aa9ff 55%, #cfe4ff 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub { color: #aebdd6; font-weight: 500; margin-top: 18px; max-width: 90%; line-height: 1.45; }
+
+  .price {
+    display: flex; align-items: baseline; gap: 14px; margin-top: 30px; align-self: flex-start;
+    background: rgba(120,170,255,.08); border: 1px solid rgba(120,170,255,.22);
+    border-radius: 22px; padding: 22px 32px;
+  }
+  .price .from { font-family: "Space Grotesk"; font-weight: 600; color: #9fb6d8; align-self: center; }
+  .price .amt { font-family: "Space Grotesk"; font-weight: 700; letter-spacing: -1px; line-height: 1; color: #ffffff; }
+  .price .meta { color: #9fb6d8; font-weight: 600; font-size: 19px; }
+
+  .features { display: grid; gap: 14px; margin-top: 32px; }
+  .features.two { grid-template-columns: 1fr 1fr; }
+  .feat {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,.045); border: 1px solid rgba(140,175,230,.16);
+    border-radius: 18px; padding: 18px 20px;
+  }
+  .feat .ic {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center;
+    background: rgba(90,169,255,.14); border: 1px solid rgba(120,170,255,.26); color: #7cc4ff;
+  }
+  .feat .ic svg { width: 24px; height: 24px; display: block; }
+  .feat span { font-weight: 600; color: #e9f1ff; line-height: 1.3; }
+
+  .control {
+    margin-top: 22px; display: flex; align-items: center; gap: 18px;
+    background: rgba(52,211,153,.09); border: 1px solid rgba(52,211,153,.30);
+    border-radius: 20px; padding: 22px 26px;
+  }
+  /* on the tall Story, let the control float to the bottom for balance */
+  .story .control { margin-top: auto; }
+  .control .tick { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(52,211,153,.16); color: #34d399; }
+  .control .tick svg { width: 24px; height: 24px; }
+  .control .big { font-family: "Space Grotesk"; font-weight: 700; color: #b6f1da; }
+  .control .small { color: #cfeee2; font-weight: 500; margin-top: 3px; line-height: 1.4; }
+
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+  .socials { display: flex; align-items: center; gap: 14px; }
+  .social { display: flex; align-items: center; gap: 11px; background: rgba(255,255,255,.05); border: 1px solid rgba(140,175,230,.18); border-radius: 999px; padding: 12px 20px; }
+  .social svg { width: 26px; height: 26px; flex-shrink: 0; }
+  .social .h { font-family: "Space Grotesk"; font-weight: 700; color: #eaf2ff; }
+  .pill {
+    font-family: "Space Grotesk"; font-weight: 700; letter-spacing: .3px; color: #06122a;
+    background: linear-gradient(95deg, #8fd0ff, #4da3ff); border-radius: 999px; padding: 18px 32px;
+  }
+
+  /* per-size scales */
+  .square h1 { font-size: 64px; }   .square .sub { font-size: 22px; }   .square .amt { font-size: 54px; }  .square .from { font-size: 23px; }  .square .brandtop { font-size: 28px; margin-bottom: 18px; }  .square .eyebrow { font-size: 16px; } .square .feat span { font-size: 20px; } .square .social .h { font-size: 19px; }
+  /* tighten vertical rhythm so everything fits the 1080 height */
+  .square h1 { margin-top: 18px; }  .square .sub { margin-top: 12px; }  .square .price { margin-top: 18px; padding: 16px 26px; }  .square .features { margin-top: 18px; gap: 11px; }  .square .feat { padding: 14px 16px; }  .square .feat .ic { width: 42px; height: 42px; }  .square .feat .ic svg { width: 21px; height: 21px; }  .square .control { padding: 16px 22px; }  .square .foot { margin-top: 18px; }
+  .portrait h1 { font-size: 82px; } .portrait .sub { font-size: 26px; } .portrait .amt { font-size: 68px; } .portrait .from { font-size: 27px; } .portrait .brandtop { font-size: 34px; } .portrait .eyebrow { font-size: 17px; } .portrait .feat span { font-size: 23px; } .portrait .social .h { font-size: 21px; }
+  .story h1 { font-size: 104px; }   .story .sub { font-size: 30px; }    .story .amt { font-size: 86px; }    .story .from { font-size: 34px; }    .story .brandtop { font-size: 44px; }   .story .eyebrow { font-size: 19px; } .story .feat span { font-size: 27px; } .story .feat .ic { width: 56px; height: 56px; } .story .feat .ic svg { width: 28px; height: 28px; } .story .control .big { font-size: 30px; } .story .control .small { font-size: 21px; } .story .social .h { font-size: 24px; } .story .social svg { width: 30px; height: 30px; } .story .pill { font-size: 25px; padding: 22px 40px; }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  ⬇ <b>Click “Download PNG”</b> under a design to save a ready-to-post image. (Needs internet the first time.)
+</div>
+
+<div class="stage" id="stage"></div>
+
+<script>
+  // ── Clean line icons (consistent stroke = professional, not AI-ish) ──────
+  const I = {
+    bag:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+    card:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+    ctrl:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg>',
+    layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+    search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    tick:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.087zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#e4e4f0" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#e4e4f0" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.4" fill="#e4e4f0"/></svg>',
+  };
+
+  const data = {
+    eyebrow: "Done-for-you online store",
+    h1a: "Sell Online.",
+    h1b: "Own Your Store.",
+    sub: "A complete e-commerce website for your business — and you stay in full control.",
+    from: "From",
+    amt: "₦100,000",
+    meta: "for a complete store",
+    features: [
+      [I.bag,    "Full online shop — cart & checkout"],
+      [I.card,   "Secure payments — card, transfer, USSD"],
+      [I.ctrl,   "You control products, prices & stock"],
+      [I.chart,  "Admin dashboard — orders & sales"],
+      [I.layers, "Sizes, colours & multiple photos"],
+      [I.search, "Built for Google — get found"],
+    ],
+    controlBig: "100% YOURS",
+    controlSmall: "Manage it yourself anytime — free training + your first 5 products uploaded.",
+    ctaText: "Let’s build yours",
+    whatsapp: "0813 487 9924",
+    instagram: "@emmanuelfaniyi4",
+  };
+
+  // size → how many features + grid columns
+  const cfg = { square: { count: 4, two: true }, portrait: { count: 6, two: true }, story: { count: 6, two: false } };
+  const feat = ([icon, label]) => `<div class="feat"><div class="ic">${icon}</div><span>${label}</span></div>`;
+
+  function canvas(size) {
+    const c = cfg[size];
+    const h = size === "square" ? 1080 : size === "portrait" ? 1350 : 1920;
+    const feats = data.features.slice(0, c.count).map(feat).join("");
+    return `
+    <div class="wrap">
+      <div class="label">${size} · 1080×${h}</div>
+      <div class="canvas ${size}" id="canvas-${size}">
+        <div class="orb a"></div><div class="orb b"></div>
+        <div class="content">
+          <div class="brandtop">tech with <span class="b">dami</span></div>
+          <div class="eyebrow"><span class="dot"></span><span class="txt">${data.eyebrow}</span></div>
+          <h1>${data.h1a}<br/><span class="accent">${data.h1b}</span></h1>
+          <p class="sub">${data.sub}</p>
+          <div class="price"><span class="from">${data.from}</span><span class="amt">${data.amt}</span><span class="meta">${data.meta}</span></div>
+          <div class="features ${c.two ? "two" : ""}">${feats}</div>
+          <div class="control">
+            <div class="tick">${I.tick}</div>
+            <div><div class="big">${data.controlBig}</div><div class="small">${data.controlSmall}</div></div>
+          </div>
+          <div class="foot">
+            <div class="socials">
+              <div class="social">${I.whatsapp}<span class="h">${data.whatsapp}</span></div>
+              <div class="social">${I.instagram}<span class="h">${data.instagram}</span></div>
+            </div>
+            <div class="pill">${data.ctaText} →</div>
+          </div>
+        </div>
+      </div>
+      <button class="dl" onclick="downloadCanvas('${size}', this)">⬇ Download PNG</button>
+    </div>`;
+  }
+
+  async function downloadCanvas(size, btn) {
+    const node = document.getElementById("canvas-" + size);
+    const original = btn.textContent;
+    btn.disabled = true; btn.textContent = "Preparing…";
+    try {
+      const dataUrl = await window.htmlToImage.toPng(node, { pixelRatio: 2, cacheBust: true });
+      const a = document.createElement("a");
+      a.download = `tech-with-dami-${size}.png`;
+      a.href = dataUrl; a.click();
+    } catch (e) {
+      alert("Couldn't auto-download (you may be offline). Tip: take a screenshot instead.");
+      console.error(e);
+    } finally { btn.disabled = false; btn.textContent = original; }
+  }
+
+  document.getElementById("stage").innerHTML = canvas("square") + canvas("portrait") + canvas("story");
+</script>
+
+</body>
+</html>

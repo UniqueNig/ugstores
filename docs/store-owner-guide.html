@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your Online Store — Owner's Guide</title>
+<style>
+  :root {
+    --ink: #1a1a1a; --muted: #6b6b6b; --line: #d8d4cc;
+    --accent: #b8914a; --soft: #f7f5f1; --tip: #eef4ea; --tipline: #cfe0c4;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; color: var(--ink); line-height: 1.6; margin: 0; background: #fff; }
+  .page { max-width: 820px; margin: 0 auto; padding: 48px 40px 64px; }
+
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 18px; margin-bottom: 26px; }
+  .brandline { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); font-family: Arial, sans-serif; }
+  h1 { font-size: 30px; margin: 8px 0 6px; }
+  .sub { color: var(--muted); font-size: 15px; margin: 0; }
+
+  .intro { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 22px 0 30px; font-size: 14.5px; }
+
+  h2 {
+    font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: Arial, sans-serif; color: #fff; background: var(--ink);
+    padding: 9px 14px; border-radius: 5px; margin: 32px 0 12px;
+  }
+  h3 { font-size: 17px; margin: 20px 0 6px; }
+  p { margin: 0 0 12px; font-size: 15px; }
+
+  ol, ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; font-size: 15px; }
+
+  .tip { background: var(--tip); border: 1px solid var(--tipline); border-radius: 7px; padding: 12px 16px; margin: 14px 0; font-size: 14px; font-family: Arial, sans-serif; }
+  .tip b { color: #3f6b2e; }
+  .path { font-family: Arial, sans-serif; font-size: 14px; background: var(--soft); border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; white-space: nowrap; }
+
+  .toc { font-family: Arial, sans-serif; font-size: 14px; columns: 2; column-gap: 30px; margin-bottom: 8px; }
+  .toc div { margin-bottom: 6px; break-inside: avoid; }
+
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; font-family: Arial, sans-serif; }
+
+  .printbar { position: sticky; top: 0; background: #111; color: #fff; font-family: Arial, sans-serif; font-size: 13px; padding: 10px 16px; text-align: center; }
+  .printbar button { background: var(--accent); color: #000; border: 0; padding: 7px 16px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-left: 10px; }
+
+  @media print {
+    .printbar { display: none; }
+    .page { padding: 0 8px; }
+    h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tip, .intro { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { break-after: avoid; }
+    body { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="printbar">
+  To save as PDF: press <strong>Ctrl/Cmd + P</strong> → choose <strong>“Save as PDF”</strong>.
+  <button onclick="window.print()">Save / Print PDF</button>
+</div>
+
+<div class="page">
+  <header>
+    <div class="brandline">Prepared by Emmanuel Faniyi</div>
+    <h1>Your Online Store — Owner’s Guide</h1>
+    <p class="sub">Everything you need to run your shop yourself: add products, handle orders, and more.</p>
+  </header>
+
+  <div class="intro">
+    Welcome to your new store! 🎉 This guide walks you through running it day-to-day, in plain language —
+    no technical knowledge needed. Take it step by step, and keep this handy. If you’d ever prefer that
+    <strong>I manage the store for you</strong> (uploading products, updates, etc.), that service is
+    available — see the last section.
+  </div>
+
+  <div class="toc">
+    <div>1 · Logging in</div>
+    <div>2 · The dashboard</div>
+    <div>3 · Categories (do first)</div>
+    <div>4 · Adding a product</div>
+    <div>5 · Editing / removing</div>
+    <div>6 · Stock &amp; “Sold Out”</div>
+    <div>7 · Orders (daily task)</div>
+    <div>8 · Discount codes</div>
+    <div>9 · Delivery options</div>
+    <div>10 · Store settings</div>
+    <div>11 · Other sections</div>
+    <div>12 · What customers see</div>
+    <div>13 · Daily routine</div>
+    <div>14 · Need help?</div>
+  </div>
+
+  <!-- 1 -->
+  <h2>1 · Logging In</h2>
+  <ol>
+    <li>Open your store’s admin page: <span class="path">yourstore.com/admin/login</span> (I’ll give you the exact link).</li>
+    <li>Enter the <strong>email and password</strong> I set up for you.</li>
+    <li>You’re now in your control panel (the “admin”).</li>
+  </ol>
+  <div class="tip"><b>Tip:</b> Bookmark the admin link on your phone and computer, and keep your password private. Don’t share your login — instead add staff as their own admin (Section 11).</div>
+
+  <!-- 2 -->
+  <h2>2 · The Dashboard</h2>
+  <p>The first screen shows a quick overview (sales, orders, etc.). On the left is the <strong>menu</strong> with everything you can manage: Products, Categories, Orders, Coupons, Shipping, Settings, and more.</p>
+  <p>The <strong>bell 🔔</strong> at the top shows new orders and alerts. A number on it means something needs your attention.</p>
+
+  <!-- 3 -->
+  <h2>3 · Categories — Do This First</h2>
+  <p>Every product belongs to a <strong>category</strong> (a group, like “Dresses” or “Bags”). Create your categories before adding products.</p>
+  <ol>
+    <li>Go to <span class="path">Categories</span> in the menu.</li>
+    <li>Click <strong>Add</strong>, type a name (e.g. “Shoes”), and save.</li>
+    <li>Repeat for each group of products you sell.</li>
+  </ol>
+
+  <!-- 4 -->
+  <h2>4 · Adding a Product</h2>
+  <p>This is the main thing you’ll do. Go to <span class="path">Products → Add New Product</span> and fill in:</p>
+  <ol>
+    <li><strong>Name</strong> — the product’s name.</li>
+    <li><strong>Description</strong> — what it is, materials, why it’s great.</li>
+    <li><strong>Price</strong> — the selling price.</li>
+    <li><strong>Category</strong> — pick the group it belongs to.</li>
+    <li><strong>URL slug</strong> — fills in automatically from the name. Leave it as is.</li>
+    <li><strong>Images</strong> — upload photos. The <strong>first photo is the main one</strong> (shown on the shop grid); the rest appear in the product gallery.</li>
+    <li><strong>Sizes &amp; Stock</strong> — if the product has sizes, add a row per size with how many you have
+      (e.g. S = 3, M = 5, L = 4; or shoe sizes 40, 41, 42). If it has <em>no</em> sizes, just use the single
+      <strong>Stock Quantity</strong> field instead.</li>
+    <li><strong>Colours</strong> (optional) — add a colour name, pick the colour, and upload photos for that
+      colour. Customers can then choose a colour and the photos switch to match.</li>
+    <li><strong>Size Guide</strong> — choose Clothing, Footwear, or None (controls the size chart customers see).</li>
+    <li><strong>Extra details</strong> (optional) — Materials, Sizing &amp; Fit, Care Instructions.</li>
+    <li><strong>Mark as New</strong> — turn on to show a “New” badge.</li>
+    <li>Click <strong>Save</strong>. It’s instantly live in your shop. ✅</li>
+  </ol>
+  <div class="tip"><b>Photo tip:</b> Use <strong>tall (portrait) photos, about 1000 × 1500 pixels</strong>, and shoot all of a product’s photos at the same size so the gallery looks neat. Good lighting and a clean background sell more.</div>
+
+  <!-- 5 -->
+  <h2>5 · Editing or Removing a Product</h2>
+  <ul>
+    <li><strong>Edit:</strong> Go to <span class="path">Products</span>, click the product, change anything, then Save.</li>
+    <li><strong>Hide instead of delete:</strong> set its stock to 0 — the shop shows “Sold Out” but keeps the page (good for items returning later).</li>
+    <li><strong>Delete:</strong> removes it permanently. Use only when you’ll never sell it again.</li>
+  </ul>
+
+  <!-- 6 -->
+  <h2>6 · Stock &amp; “Sold Out”</h2>
+  <ul>
+    <li>When an item (or a size) reaches <strong>0</strong>, the shop automatically shows <strong>“Sold Out”</strong> and stops customers buying it.</li>
+    <li>Customers can ask to be <strong>emailed when it’s back</strong>. The moment you raise the stock above 0 and save, those waiting customers are emailed <em>automatically</em> — bringing them back to buy.</li>
+    <li>The <span class="path">Inventory</span> page gives you a quick view to check and adjust stock levels.</li>
+  </ul>
+
+  <!-- 7 -->
+  <h2>7 · Orders — Your Daily Task</h2>
+  <p>Go to <span class="path">Orders</span> to see every order: the customer, what they bought (including size/colour), and the total.</p>
+  <ol>
+    <li>When a customer pays, the order appears and its status becomes <strong>Processing</strong>. You also get a “New order” email.</li>
+    <li>Prepare/package the order.</li>
+    <li>Update the status as it moves: <strong>Processing → Shipped → Delivered</strong>.</li>
+    <li>The customer is kept informed; you keep a clear record of what’s done.</li>
+  </ol>
+  <div class="tip"><b>Tip:</b> Stock is reduced automatically when an order is paid — you don’t adjust it manually for sales.</div>
+
+  <!-- 8 -->
+  <h2>8 · Discount Codes (Coupons)</h2>
+  <ol>
+    <li>Go to <span class="path">Coupons → Add</span>.</li>
+    <li>Set a code (e.g. <strong>SAVE10</strong>), the discount amount, and any minimum spend.</li>
+    <li>Customers type the code at checkout to get the discount.</li>
+  </ol>
+
+  <!-- 9 -->
+  <h2>9 · Delivery Options (Shipping)</h2>
+  <p>Go to <span class="path">Shipping</span> to set how you deliver and what it costs. Add options like:</p>
+  <ul>
+    <li>Standard delivery — e.g. ₦3,000</li>
+    <li>Express delivery — e.g. ₦7,000</li>
+    <li>Store pickup — ₦0</li>
+  </ul>
+  <p>These appear for customers to choose at checkout.</p>
+
+  <!-- 10 -->
+  <h2>10 · Store Settings</h2>
+  <p>Go to <span class="path">Settings</span> to manage:</p>
+  <ul>
+    <li><strong>Store name</strong> and <strong>currency</strong></li>
+    <li><strong>Contact email</strong> — where customer messages and order alerts go</li>
+    <li><strong>WhatsApp number</strong> — powers the “Order on WhatsApp” button on products</li>
+    <li><strong>Notifications</strong> — turn order/email alerts on or off</li>
+  </ul>
+
+  <!-- 11 -->
+  <h2>11 · Other Things You Can Manage</h2>
+  <ul>
+    <li><strong>Reviews</strong> — see and manage customer reviews of your products.</li>
+    <li><strong>Testimonials</strong> &amp; <strong>Team</strong> — the quotes and people shown on your homepage / About page.</li>
+    <li><strong>Subscribers</strong> — people who joined your newsletter.</li>
+    <li><strong>Customers</strong> — your registered customers.</li>
+    <li><strong>Admins</strong> — add a staff member with their own login (only give access to people you trust).</li>
+    <li><strong>Profile</strong> — change your own name and password.</li>
+  </ul>
+
+  <!-- 12 -->
+  <h2>12 · What Your Customers Experience</h2>
+  <p>So you understand the full flow:</p>
+  <ol>
+    <li>They browse your <strong>Shop</strong> and open a product.</li>
+    <li>They pick a size/colour, add it to the <strong>cart</strong>, and go to <strong>checkout</strong>.</li>
+    <li>They pay securely by card, transfer, or USSD (via Paystack) and get a <strong>confirmation email</strong>.</li>
+    <li>You get a <strong>new-order alert</strong> and fulfil it (Section 7).</li>
+  </ol>
+
+  <!-- 13 -->
+  <h2>13 · A Simple Daily Routine</h2>
+  <ul>
+    <li>Check <strong>Orders</strong> — fulfil new ones and update their status.</li>
+    <li>Restock items running low; restock anything that sold out.</li>
+    <li>Reply to any <strong>contact messages</strong> (sent to your contact email).</li>
+    <li>Add new products as they arrive.</li>
+  </ul>
+
+  <!-- 14 -->
+  <h2>14 · Need Help, or Want Me to Manage It?</h2>
+  <p>You’ve been trained to run everything yourself — but if you get busy, I offer a <strong>monthly management
+  service</strong>: you send me your product details and photos, and I handle the uploads, updates, and
+  day-to-day store activity for you.</p>
+  <p>Reach me anytime:</p>
+  <ul>
+    <li>Email — <strong>faniyiemmanuel2018@gmail.com</strong></li>
+    <li>WhatsApp — <strong>0813 487 9924</strong></li>
+  </ul>
+
+  <footer>
+    You’ve got this — running an online store is mostly just adding products and fulfilling orders.
+    Keep this guide nearby, and reach out whenever you need a hand. — Emmanuel Faniyi
+  </footer>
+</div>
+
+</body>
+</html>
