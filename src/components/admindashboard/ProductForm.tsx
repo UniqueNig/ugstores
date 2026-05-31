@@ -242,6 +242,10 @@ export default function ProductForm({
 
   const uploadImage = async (file: File) => {
     const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    // Preset name is configurable via env (must be NEXT_PUBLIC_ to reach the
+    // browser); defaults to "ugstore_products" if unset.
+    const preset =
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "ugstore_products";
     // Surface clear, actionable errors instead of failing silently.
     if (!cloud) {
       throw new Error(
@@ -251,7 +255,7 @@ export default function ProductForm({
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "ugstore_products");
+    formData.append("upload_preset", preset);
 
     const res = await fetch(
       `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
@@ -262,7 +266,7 @@ export default function ProductForm({
       // e.g. "Upload preset not found" or "...must be whitelisted for unsigned uploads"
       throw new Error(
         data?.error?.message ||
-          "Cloudinary upload failed. Check that the unsigned preset 'ugstore_products' exists and the cloud name is correct.",
+          `Cloudinary upload failed. Check that the unsigned preset '${preset}' exists and the cloud name is correct.`,
       );
     }
     return data.secure_url as string;
