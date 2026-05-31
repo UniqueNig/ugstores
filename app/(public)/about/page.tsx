@@ -64,7 +64,7 @@ export default async function AboutPage() {
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(110deg, var(--accent), var(--accent-2))" }}>and a purpose.</span>
           </h1>
           <p className="text-lg font-['DM_Sans'] leading-relaxed max-w-xl mt-8" style={{ color: "var(--text-secondary)" }}>
-            U.G STORES was born from a simple conviction — that the tools you use every day
+            U.G STORE was born from a simple conviction — that the tools you use every day
             should do more than sit on your desk. They should push you forward.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default async function AboutPage() {
             <div className="space-y-4 font-['DM_Sans'] text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
               <p>We began as a stationery brand — notebooks, planners, pens, highlighters; the everyday essentials that keep life organized and intentions clear.</p>
               <p>But we quickly realized that what our customers were really looking for wasn&apos;t just a journal. It was a nudge. A reminder. A tangible expression of the life they were working toward. So we grew.</p>
-              <p>Today, U.G STORES sits at the intersection of organization, gifting, and growth — curating stationery, fashion pieces, and thoughtfully assembled gift sets, because the right things in your hands can change the way you show up in the world.</p>
+              <p>Today, U.G STORE sits at the intersection of organization, gifting, and growth — curating stationery, fashion pieces, and thoughtfully assembled gift sets, because the right things in your hands can change the way you show up in the world.</p>
             </div>
           </div>
           {/* Storefront visual — uses /storefront.jpg if present, with a brand

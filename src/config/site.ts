@@ -30,13 +30,13 @@
 
 export const siteConfig = {
   // Short brand name (buttons, sentences: "Sign in to your U.G STORES account").
-  name: "U.G STORES",
+  name: "U.G STORE",
   // Fuller name used in SEO titles, footer copyright, and legal/policy pages.
-  legalName: "U.G STORES",
+  legalName: "U.G STORE",
 
   // The logo wordmark renders as two halves with the second in the accent
-  // colour, e.g. U.G + STORES. Change these to rebrand the logo text.
-  wordmark: { start: "U.G ", end: "STORES" },
+  // colour, e.g. U.G + STORE. Change these to rebrand the logo text.
+  wordmark: { start: "U.G ", end: "STORE" },
 
   // One-line brand promise shown in the footer.
   tagline: "Drawing you to the place of Growth.",
@@ -44,8 +44,8 @@ export const siteConfig = {
   // Defaults for search-engine metadata (app/layout.tsx). Per-page titles still
   // override these via their own `metadata` / generateMetadata.
   seo: {
-    titleDefault: "U.G STORES — Faith-based Gifts, Stationery & Accessories",
-    titleTemplate: "%s | U.G STORES",
+    titleDefault: "U.G STORE — Faith-based Gifts, Stationery & Accessories",
+    titleTemplate: "%s | U.G STORE",
     description:
       "Faith-based gift items and souvenirs — journals, Bibles, stationery and fashion accessories, curated to draw you to the place of your Growth.",
   },

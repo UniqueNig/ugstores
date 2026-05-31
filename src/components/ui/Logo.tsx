@@ -20,7 +20,7 @@ import { siteConfig } from "@/src/config/site";
  * mobile/compact slot shows the two-tone "U.G STORES" wordmark — both clean,
  * neither breaks.
  */
-const HAS_DARK_LOGO = false; // ← set true once public/logo-dark.png exists
+const HAS_DARK_LOGO = true; // public/logo-dark.png exists → used in dark mode
 const HAS_BADGE = false; // ← set true once public/logo-badge.png exists
 
 export default function Logo({
