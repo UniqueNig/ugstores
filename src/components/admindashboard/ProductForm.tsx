@@ -241,16 +241,31 @@ export default function ProductForm({
   };
 
   const uploadImage = async (file: File) => {
+    const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    // Surface clear, actionable errors instead of failing silently.
+    if (!cloud) {
+      throw new Error(
+        "Cloudinary is not configured — NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is missing. Add it to your env (and on Vercel for the live site), then redeploy.",
+      );
+    }
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "ugstore_products");
 
     const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
       { method: "POST", body: formData },
     );
     const data = await res.json();
-    return data.secure_url;
+    if (!res.ok || !data.secure_url) {
+      // e.g. "Upload preset not found" or "...must be whitelisted for unsigned uploads"
+      throw new Error(
+        data?.error?.message ||
+          "Cloudinary upload failed. Check that the unsigned preset 'ugstore_products' exists and the cloud name is correct.",
+      );
+    }
+    return data.secure_url as string;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -392,7 +407,7 @@ export default function ProductForm({
                     const urls = await Promise.all(files.map((f) => uploadImage(f)));
                     setImages((arr) => [...arr, ...urls.filter(Boolean)]);
                   } catch (err) {
-                    console.error("Upload failed:", err);
+                    alert((err as Error).message || "Upload failed");
                   } finally {
                     setSaving(false);
                   }
