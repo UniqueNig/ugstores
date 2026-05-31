@@ -142,7 +142,7 @@ export default function AdminAdminsPage() {
                 <label className={labelClass} style={{ color: "var(--text-muted)" }}>Email *</label>
                 <input required type="email" value={newAdmin.email}
                   onChange={(e) => setNewAdmin((p) => ({ ...p, email: e.target.value }))}
-                  className={inputClass} style={inputStyle} placeholder="admin@ugstores.com" />
+                  className={inputClass} style={inputStyle} placeholder="admin@ugstore.com" />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
