@@ -21,7 +21,7 @@ import { siteConfig } from "@/src/config/site";
  * neither breaks.
  */
 const HAS_DARK_LOGO = true; // public/logo-dark.png exists → used in dark mode
-const HAS_BADGE = false; // ← set true once public/logo-badge.png exists
+const HAS_BADGE = true; // public/logo-badge.png exists → compact mobile logo
 
 export default function Logo({
   height = 40,
