@@ -25,12 +25,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Logo height={48} />
-            <p
-              className="brand-tagline text-base mt-4 leading-relaxed max-w-xs"
-              style={{ color: "var(--accent-2)" }}
-            >
-              {siteConfig.tagline}
-            </p>
+
+            {/* Tagline omitted — it's already part of the logo lockup. */}
 
             {/* Social icons (frosted glass chips) */}
             {socials.length > 0 && (

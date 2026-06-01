@@ -1,13 +1,19 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { siteConfig } from "@/src/config/site";
 
 // Auto-generated social share card (link previews on WhatsApp, X, Facebook…).
-// Next wires this into <meta og:image> for every page that doesn't set its own.
+// Uses the REAL logo for brand consistency (logo already includes the tagline).
 export const alt = `${siteConfig.name} — ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OgImage() {
+  // Embed the actual logo file as a data URI (runs at build on the Node runtime).
+  const logo = await readFile(join(process.cwd(), "public", "logo.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -15,70 +21,21 @@ export default async function OgImage() {
           height: "100%",
           width: "100%",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
-          padding: "90px",
+          padding: "120px",
           backgroundColor: "#FFFFFF",
           backgroundImage:
-            "linear-gradient(135deg, #FFFFFF 55%, rgba(255,170,0,0.14) 80%, rgba(45,116,39,0.18))",
-          fontFamily: "sans-serif",
+            "linear-gradient(135deg, #FFFFFF 50%, rgba(255,170,0,0.14) 80%, rgba(45,116,39,0.18))",
         }}
       >
-        {/* Badge + wordmark */}
-        <div style={{ display: "flex", alignItems: "center", gap: "26px" }}>
-          <div
-            style={{
-              width: "112px",
-              height: "112px",
-              borderRadius: "9999px",
-              backgroundColor: "#2D7427",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#FFFFFF",
-              fontSize: "62px",
-              fontWeight: 800,
-            }}
-          >
-            U
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: "92px",
-              fontWeight: 800,
-              color: "#FFAA00",
-              letterSpacing: "-2px",
-            }}
-          >
-            {siteConfig.name}
-          </div>
-        </div>
-
-        {/* Tagline */}
-        <div
-          style={{
-            display: "flex",
-            marginTop: "38px",
-            fontSize: "46px",
-            fontStyle: "italic",
-            color: "#2D7427",
-          }}
-        >
-          {siteConfig.tagline}
-        </div>
-
-        {/* Sub-line */}
-        <div
-          style={{
-            display: "flex",
-            marginTop: "22px",
-            fontSize: "28px",
-            color: "#555555",
-          }}
-        >
-          Faith-based gifts · Stationery · Accessories
-        </div>
+        {/* logo.png is ~4:1; keep that ratio */}
+        <img
+          src={logoSrc}
+          width={960}
+          height={240}
+          style={{ objectFit: "contain" }}
+        />
       </div>
     ),
     { ...size },
